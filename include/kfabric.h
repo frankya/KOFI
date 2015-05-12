@@ -128,8 +128,9 @@ struct kfid {
 
 int kfi_getinfo(uint32_t version, struct kfi_info *hints, struct kfi_info **info);
 void kfi_freeinfo(struct kfi_info *info);
+struct kfi_info *kfi_allocinfo(void);
 
-void kfi_provider_register(uint32_t version, struct kfi_provider *provider);
+void kfi_provider_register(struct kfi_provider *provider);
 void kfi_provider_deregister(struct kfi_provider *provider);
 
 struct kfi_ops_fabric {
@@ -157,4 +158,4 @@ kfi_open_ops(struct kfid *fid, const char *name, uint64_t flags,
 	return fid->ops->ops_open(fid, name, flags, ops, context);
 }
 
-#endif /* _FABRIC_H_ */
+#endif /* _KFABRIC_H_ */
